@@ -1,0 +1,26 @@
+<div class="conteudo-geral">
+    <div class="form-registro">
+        <img src="../../../assets/logo-organizaGrana.svg" alt="Logo Organiza Grana" class="logo-organizaGrana">
+        <form [formGroup]="registroUsuarioForm" (ngSubmit)="registrarUsuario()">
+            <div class="mb-3">
+                <span>Cadastre-se para controlar suas finanças</span>
+            </div>
+            <div>
+                <input class="form-control" type="text" id="email" formControlName="email" placeholder="Email" aria-label="Email">
+            </div>
+            <div>
+                <input class="form-control" type="email" id="nome" formControlName="nome" placeholder="Nome e sobrenome" aria-label="Nome e sobrenome">
+            </div>
+            <div>
+                <input class="form-control" type="password" id="senha" formControlName="senha" placeholder="Senha" aria-label="Senha">
+            </div>
+            <div>
+                <input class="form-control" type="password" id="confirmacaoSenha" formControlName="confirmacaoSenha" placeholder="Confirmar senha" aria-label="Confirmar senha">
+            </div>
+            <div class="pt-3">
+                <button class="btn botao-padrao" type="submit" [disabled]="registroUsuarioForm.invalid">Cadastre-se</button>
+            </div>
+        </form>
+    </div>
+</div>
+        
