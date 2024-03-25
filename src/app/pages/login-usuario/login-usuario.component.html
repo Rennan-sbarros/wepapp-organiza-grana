@@ -1,0 +1,20 @@
+<div class="conteudo-geral">
+    <div class="form-login">
+        <img src="../../../assets/logo-organizaGrana.svg" alt="Logo Organiza Grana" class="logo-organizaGrana">
+        <form [formGroup]="loginUsuarioForm" (ngSubmit)="logarUsuario()">
+            <div class="mb-3">
+                <span>Realize seu login</span>
+            </div>
+            <div>
+                <input class="form-control" type="text" id="email" formControlName="email" placeholder="Email" aria-label="Email">
+            </div>
+            <div>
+                <input class="form-control" type="password" id="senha" formControlName="senha" placeholder="Senha" aria-label="Senha">
+            </div>
+            <div class="pt-3">
+                <button class="btn botao-padrao" type="submit" [disabled]="loginUsuarioForm.invalid">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+        
