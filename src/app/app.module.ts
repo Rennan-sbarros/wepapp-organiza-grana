@@ -10,13 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginUsuarioComponent } from './pages/login-usuario/login-usuario.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegistroUsuarioComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

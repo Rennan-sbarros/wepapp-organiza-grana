@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { finalize } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 @Component({
   selector: 'app-login-usuario',
@@ -14,7 +16,8 @@ export class LoginUsuarioComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private loadingService: LoadingService
   ){}
   
   ngOnInit(): void {
@@ -32,17 +35,14 @@ export class LoginUsuarioComponent implements OnInit{
     this.loginUsuarioForm.reset();
   }
 
-  limparSenhas(){
-    this.loginUsuarioForm.patchValue({
-      senha: '',
-      
-    });
-  }
-
   logarUsuario(){
     const { email, senha } = this.loginUsuarioForm.value;
 
-    this.authService.loginUsuario(email, senha).subscribe({
+    this.loadingService.mostrarLoading();
+    
+    this.authService.loginUsuario(email, senha).pipe(
+      finalize(() => this.loadingService.ocultarLoading()))
+    .subscribe({
       next: (result) => {
         this.authService.salvarToken(result.token);
         this.toastr.success('Usuário autenticado com sucesso!', 'Login');
