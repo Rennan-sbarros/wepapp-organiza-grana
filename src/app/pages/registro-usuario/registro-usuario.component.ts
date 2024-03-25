@@ -31,18 +31,32 @@ export class RegistroUsuarioComponent implements OnInit{
     });
   }
   
+  limparCampos() {
+    this.registroUsuarioForm.reset();
+  }
+
+  limparSenhas(){
+    this.registroUsuarioForm.patchValue({
+      senha: '',
+      confirmacaoSenha: ''
+    });
+  }
+
   registrarUsuario(){
     const payload = this.registroUsuarioForm.value;
 
     this.authService.registroUsuario(payload).subscribe({
       next: (result) => {
         this.toastr.success('Usuário criado com sucesso!', 'Registro');
+        this.limparCampos();
       },
       error: (err) => {
         if (err.error && err.error.msg) {
           this.toastr.error(err.error.msg, 'Erro ao realizar cadastro');
+          this.limparSenhas();
         } else {
           this.toastr.error('Erro desconhecido ao realizar cadastro', 'Erro');
+          this.limparSenhas();
         }
       }
     })

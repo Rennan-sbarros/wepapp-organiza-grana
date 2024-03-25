@@ -28,6 +28,17 @@ export class LoginUsuarioComponent implements OnInit{
     });
   }
   
+  limparCampos() {
+    this.loginUsuarioForm.reset();
+  }
+
+  limparSenhas(){
+    this.loginUsuarioForm.patchValue({
+      senha: '',
+      
+    });
+  }
+
   logarUsuario(){
     const { email, senha } = this.loginUsuarioForm.value;
 
@@ -35,11 +46,14 @@ export class LoginUsuarioComponent implements OnInit{
       next: (result) => {
         this.authService.salvarToken(result.token);
         this.toastr.success('Usuário autenticado com sucesso!', 'Login');
+        this.limparCampos();
       },
       error: (err) => {
         if (err.error && err.error.msg) {
           this.toastr.error(err.error.msg, 'Erro ao realizar login');
+          this.loginUsuarioForm.patchValue({senha: ''});
         } else {
+          this.loginUsuarioForm.patchValue({senha: ''});
           this.toastr.error('Erro desconhecido ao fazer login', 'Erro');
         }
       }
