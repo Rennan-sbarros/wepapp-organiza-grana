@@ -8,6 +8,8 @@ import { RegistroUsuarioComponent } from './pages/registro-usuario/registro-usua
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginUsuarioComponent } from './pages/login-usuario/login-usuario.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,16 @@ import { LoginUsuarioComponent } from './pages/login-usuario/login-usuario.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      tapToDismiss: true,
+      progressAnimation: 'increasing'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

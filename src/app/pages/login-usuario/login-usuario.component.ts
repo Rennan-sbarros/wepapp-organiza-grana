@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class LoginUsuarioComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
+    private toastr: ToastrService
   ){}
   
   ngOnInit(): void {
@@ -32,6 +34,14 @@ export class LoginUsuarioComponent implements OnInit{
     this.authService.loginUsuario(email, senha).subscribe({
       next: (result) => {
         this.authService.salvarToken(result.token);
+        this.toastr.success('Usuário autenticado com sucesso!', 'Login');
+      },
+      error: (err) => {
+        if (err.error && err.error.msg) {
+          this.toastr.error(err.error.msg, 'Erro ao realizar login');
+        } else {
+          this.toastr.error('Erro desconhecido ao fazer login', 'Erro');
+        }
       }
     })
   }

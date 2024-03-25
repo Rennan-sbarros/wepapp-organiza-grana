@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/core/models/usuario.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -14,6 +15,7 @@ export class RegistroUsuarioComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
+    private toastr: ToastrService
   ){}
   
   ngOnInit(): void {
@@ -34,7 +36,14 @@ export class RegistroUsuarioComponent implements OnInit{
 
     this.authService.registroUsuario(payload).subscribe({
       next: (result) => {
-        
+        this.toastr.success('Usuário criado com sucesso!', 'Registro');
+      },
+      error: (err) => {
+        if (err.error && err.error.msg) {
+          this.toastr.error(err.error.msg, 'Erro ao realizar cadastro');
+        } else {
+          this.toastr.error('Erro desconhecido ao realizar cadastro', 'Erro');
+        }
       }
     })
   }
