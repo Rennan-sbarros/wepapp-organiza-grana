@@ -2,3 +2,15 @@
   padding: 1rem 3rem;
   border-bottom: 0.2px solid #A5A1A1;
 }
+
+.botao-padrao{
+  background-color: $cor-secundaria-1;
+  color: $cor-neutra-1;
+  transition: transform 0.3s ease; 
+  border: none;
+
+  &:hover {
+      transform: scale(1.1);
+      border: none;
+  }
+}
