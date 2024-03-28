@@ -1,0 +1,21 @@
+@import '../../core/scss/index.scss';
+
+.conteudo-esquerda{
+    padding: 50px 50px 50px 0;
+    .texto{
+        
+        text-align: justify; 
+        text-align-last: left; 
+
+        p{
+            font-size: 18px;
+        }
+    }
+
+    .botao-financas{
+        button{
+            font-weight: 600;
+        }
+    }
+}
+
