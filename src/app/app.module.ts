@@ -11,6 +11,7 @@ import { LoginUsuarioComponent } from './pages/login-usuario/login-usuario.compo
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './shared/components/loading/loading.component';
+import { FinancasComponent } from './pages/financas/financas.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
     HomeComponent,
     RegistroUsuarioComponent,
     LoginUsuarioComponent,
-    LoadingComponent
+    LoadingComponent,
+    FinancasComponent
   ],
   imports: [
     BrowserModule,

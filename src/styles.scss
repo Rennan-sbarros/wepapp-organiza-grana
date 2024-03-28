@@ -11,7 +11,9 @@
 }
 
 body{
-  background: $cor-primaria-1;
+  background: $cor-primaria-1 !important;
+  color: $cor-neutra-1 !important;
+  padding: 0 70px 0 70px;
 }
 
 .row{
