@@ -1,1 +1,40 @@
-<p>lista-financas works!</p>
+<div *ngIf="financas; else semFinancas">
+    <div class="container">
+        <div class="table-container">
+            <div class="d-flex justify-content-end mb-3">
+                <button class="btn botao-padrao">
+                    Adicionar Finanças
+                    <i class="fa-solid fa-plus ps-1"></i>
+                </button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">Período</th>
+                      <th scope="col">Objetivo</th>
+                      <th scope="col">Ganhos</th>
+                      <th scope="col">Despesas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let financa of financas">
+                      <td>{{financa.periodoMes}}/{{financa.periodoAno}}</td>
+                      <td>{{financa.objetivo}}</td>
+                      <td>{{financa.totalGanhos}}</td>
+                      <td>{{financa.totalDespesas}}</td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>     
+</div>
+
+<ng-template #semFinancas>
+    <div class="sem-financas flex-column gap-2">
+        <span>Não há finanças cadastradas.</span>
+        <button class="btn botao-padrao">
+            Adicionar Finanças
+            <i class="fa-solid fa-plus ps-1"></i>
+        </button>
+    </div>
+</ng-template>

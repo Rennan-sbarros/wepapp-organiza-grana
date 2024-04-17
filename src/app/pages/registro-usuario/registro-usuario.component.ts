@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/core/models/usuario.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -15,7 +16,8 @@ export class RegistroUsuarioComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ){}
   
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class RegistroUsuarioComponent implements OnInit{
       next: (result) => {
         this.toastr.success('Usuário criado com sucesso!', 'Registro');
         this.limparCampos();
+        this.router.navigate(['/usuario-login'])
       },
       error: (err) => {
         if (err.error && err.error.msg) {
