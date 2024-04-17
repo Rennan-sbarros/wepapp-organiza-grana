@@ -14,6 +14,7 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { FinancasComponent } from './pages/financas/financas.component';
 import { FinancasModule } from "./pages/financas/financas.module";
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { HeaderComponent } from './core/components/header/header.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
         RegistroUsuarioComponent,
         LoginUsuarioComponent,
         LoadingComponent,
-        FinancasComponent
+        FinancasComponent,
+        HeaderComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
