@@ -1,0 +1,49 @@
+@import '../../../core/scss/index.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 5rem;
+
+    .table-container {
+        width: 80%;  
+    }
+
+    table{
+        --bs-table-bg: #ECECEC4D;
+        --bs-table-color: var(--cor-neutra-1);
+        --bs-table-striped-bg: #292241;
+        --bs-table-striped-color:  var(--cor-neutra-1);
+        border-radius: 0.5rem; 
+        overflow: hidden;
+        text-align: center;
+    
+        th{
+            background-color: $cor-primaria-3;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    
+        tbody, td, tfoot, th, thead, tr {
+            border-color: none;
+            border-style: none;
+            border-width: none;
+        }
+    }
+}
+
+.sem-financas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    span{
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
